@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Usuario</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f5dc; /* beige */
+      color: #4b3e2a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 1.2rem;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #d2b48c;
+      border-radius: 5px;
+      background-color: #fffaf0;
+      color: #4b3e2a;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #d2b48c; /* tan */
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: #bfa17a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Buscar Usuario</h1>
+  <label for="apellido">Apellido:</label>
+  <input type="text" id="apellido" name="apellido" placeholder="Ingrese el apellido">
+  <div class="buttons">
+    <button onclick="location.href='agregarUsuario.html'">Agregar</button>
+    <button onclick="location.href='modificarUsuario.html'">Modificar</button>
+    <button onclick="location.href='index.html'">Volver</button>
+  </div>
+</body>
+</html>
