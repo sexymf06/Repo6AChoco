@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agregar Usuario</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Agregar Usuario</h2>
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="text" id="email" placeholder="Email">
+    <button onclick="agregarUsuario()">Agregar</button>
+  </div>
+
+  <script>
+    function agregarUsuario() {
+      let nombre = document.getElementById("nombre").value;
+      let email = document.getElementById("email").value;
+
+      if (!nombre || !email) {
+        alert("Todos los campos son obligatorios.");
+        return;
+      }
+
+      let usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+      usuarios.push({ nombre, email });
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+      alert("Usuario agregado.");
+      document.getElementById("nombre").value = "";
+      document.getElementById("email").value = "";
+    }
+  </script>
+</body>
+</html>

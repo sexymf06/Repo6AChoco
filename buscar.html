@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buscar Usuario</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Buscar Usuario</h2>
+    <input type="text" id="termino" placeholder="Buscar por nombre o email">
+    <button onclick="buscar()">Buscar</button>
+    <ul id="resultados"></ul>
+  </div>
+
+  <script>
+    function buscar() {
+      let termino = document.getElementById("termino").value.toLowerCase();
+      let usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+      let resultados = usuarios.filter(u => 
+        u.nombre.toLowerCase().includes(termino) ||
+        u.email.toLowerCase().includes(termino)
+      );
+
+      let lista = document.getElementById("resultados");
+      lista.innerHTML = "";
+
+      if (resultados.length === 0) {
+        lista.innerHTML = "<li>No se encontraron usuarios.</li>";
+      } else {
+        resultados.forEach(u => {
+          let li = document.createElement("li");
+          li.textContent = `Nombre: ${u.nombre} | Email: ${u.email}`;
+          lista.appendChild(li);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

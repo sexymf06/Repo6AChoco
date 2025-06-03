@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modificar Usuario</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Modificar Usuario</h2>
+    <input type="text" id="buscarEmail" placeholder="Email del usuario a modificar">
+    <button onclick="buscarUsuario()">Buscar</button>
+    
+    <div id="formularioModificar" style="display:none;">
+      <input type="text" id="nuevoNombre" placeholder="Nuevo nombre">
+      <button onclick="modificarUsuario()">Guardar Cambios</button>
+    </div>
+  </div>
+
+  <script>
+    let usuarioIndex = -1;
+
+    function buscarUsuario() {
+      let email = document.getElementById("buscarEmail").value;
+      let usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+
+      usuarioIndex = usuarios.findIndex(u => u.email === email);
+
+      if (usuarioIndex !== -1) {
+        document.getElementById("formularioModificar").style.display = "block";
+        document.getElementById("nuevoNombre").value = usuarios[usuarioIndex].nombre;
+      } else {
+        alert("Usuario no encontrado.");
+      }
+    }
+
+    function modificarUsuario() {
+      let usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+      usuarios[usuarioIndex].nombre = document.getElementById("nuevoNombre").value;
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+      alert("Usuario modificado.");
+    }
+  </script>
+</body>
+</html>
