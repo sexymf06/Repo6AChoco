@@ -1,0 +1,17 @@
+<html>
+<head>
+<script type="text/javascript">
+<!--
+var myVar = "global"; // Declare a global variable
+function checkscope( ) {
+ var myVar = "local"; // Declare a local variable
+ document.write(myVar);
+}
+//-->
+</script>
+</head>
+<body>
+Click here for the result
+<input type="button" onclick="checkscope()" value="fijate si dice local"/>
+</body>
+</html>
